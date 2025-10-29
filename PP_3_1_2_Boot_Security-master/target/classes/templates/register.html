@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+
+<form th:action="@{/register}" th:object="${user}" method="post" id="registerForm">
+    <div class="form-group">
+        <label for="name">Имя <span class="required">*</span>:</label>
+        <input type="text"
+               id="name"
+               th:field="*{name}"
+               placeholder="Введите ваше имя"
+               required>
+        <div th:if="${#fields.hasErrors('name')}" class="error-message">
+            <span th:errors="*{name}">Name Error</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="age">Возраст <span class="required">*</span>:</label>
+        <input type="number"
+               id="age"
+               th:field="*{age}"
+               placeholder="Введите ваш возраст"
+               required>
+        <div th:if="${#fields.hasErrors('age')}" class="error-message">
+            <span th:errors="*{age}">Age Error</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email <span class="required">*</span>:</label>
+        <input type="email"
+               id="email"
+               th:field="*{email}"
+               placeholder="Введите email"
+               required>
+        <div th:if="${#fields.hasErrors('email')}" class="error-message">
+            <span th:errors="*{email}">Email Error</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Пароль <span class="required">*</span>:</label>
+        <input type="password"
+               id="password"
+               th:field="*{password}"
+               placeholder="Введите надежный пароль"
+               required
+               minlength="8">
+
+        <div th:if="${#fields.hasErrors('password')}" class="error-message">
+            <span th:errors="*{password}">Password Error</span>
+        </div>
+    </div>
+
+</body>
+</html>
