@@ -4,33 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete User</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
             background-color: #f5f5f5;
-            display: flex;
             min-height: 100vh;
         }
 
-        /* Sidebar styles */
         .sidebar {
-            width: 250px;
             background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
             min-height: 100vh;
         }
 
         .sidebar-header {
-            padding: 0 20px 20px 20px;
             border-bottom: 1px solid #34495e;
-            margin-bottom: 20px;
-        }
-
-        .sidebar-user-info {
-            font-size: 14px;
-            margin-bottom: 10px;
         }
 
         .sidebar-user-email {
@@ -39,24 +28,10 @@
         }
 
         .sidebar-title {
-            font-size: 18px;
-            margin: 10px 0;
             color: #ecf0f1;
         }
 
-        .nav-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .nav-links li {
-            margin: 0;
-        }
-
         .nav-links a {
-            display: block;
-            padding: 12px 20px;
             color: #bdc3c7;
             text-decoration: none;
             transition: all 0.3s;
@@ -79,250 +54,203 @@
             background-color: #27ae60 !important;
             color: white !important;
             border-left-color: #2ecc71 !important;
-            margin-top: 20px;
         }
 
         .user-view-link:hover {
             background-color: #219653 !important;
         }
 
-        /* Main content styles */
-        .main-content {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .header {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-
-        .user-info {
-            color: #666;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .panel-title {
-            font-size: 24px;
-            margin: 10px 0;
-            color: #333;
-            font-weight: normal;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            background-color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
+        .header-card {
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .section-title {
-            font-size: 18px;
-            margin: 0;
-            color: #333;
-            font-weight: normal;
-        }
-
-        .btn-add {
-            background: #2196F3;
-            color: white;
-            padding: 8px 16px;
-            font-size: 14px;
-            text-decoration: none;
-            border-radius: 4px;
-            display: inline-block;
-        }
-
-        .btn-add:hover {
-            background: #0b7dda;
-        }
-
-        /* Delete confirmation styles */
         .delete-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-width: 500px;
             border-left: 4px solid #f44336;
+            border-radius: 8px;
         }
 
         .delete-title {
-            font-size: 20px;
-            margin-bottom: 25px;
-            color: #333;
             font-weight: normal;
             color: #f44336;
         }
 
-        .user-info-display {
-            margin-bottom: 25px;
+        .panel-title {
+            font-weight: normal;
         }
 
-        .info-row {
-            display: flex;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .info-label {
-            font-weight: bold;
-            width: 120px;
-            color: #333;
-        }
-
-        .info-value {
-            flex: 1;
-            color: #666;
+        .section-title {
+            font-weight: normal;
         }
 
         .role-badge {
-            display: inline-block;
             background: #e0e0e0;
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 12px;
-            margin-right: 5px;
-        }
-
-        .warning-message {
-            background-color: #ffebee;
-            border: 1px solid #f44336;
-            border-radius: 4px;
-            padding: 15px;
-            margin-bottom: 25px;
-            color: #c62828;
-        }
-
-        .form-actions {
-            margin-top: 30px;
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
-        .btn-delete {
-            background: #f44336;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn-delete:hover {
-            background: #da190b;
-        }
-
-        .btn-cancel {
-            background: #757575;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .btn-cancel:hover {
-            background: #616161;
         }
 
         .user-email {
             font-weight: bold;
         }
+
+        .warning-message {
+            background-color: #ffebee;
+            border: 1px solid #f44336;
+            color: #c62828;
+        }
+
+        .btn-custom-delete {
+            background: #f44336;
+            border-color: #f44336;
+        }
+
+        .btn-custom-delete:hover {
+            background: #da190b;
+            border-color: #da190b;
+        }
+
+        .btn-custom-cancel {
+            background: #757575;
+            border-color: #757575;
+        }
+
+        .btn-custom-cancel:hover {
+            background: #616161;
+            border-color: #616161;
+        }
+
+        .btn-custom-add {
+            background: #2196F3;
+            border-color: #2196F3;
+        }
+
+        .btn-custom-add:hover {
+            background: #0b7dda;
+            border-color: #0b7dda;
+        }
+
+        .info-row {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-value {
+            color: #666;
+        }
     </style>
 </head>
 <body>
-<!-- Sidebar -->
-<div class="sidebar">
-    <div class="sidebar-header">
-        <h2 class="sidebar-title">Admin Panel</h2>
-    </div>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 sidebar p-0">
+            <div class="sidebar-header p-3">
+                <h2 class="sidebar-title h5 mb-0">Admin Panel</h2>
+            </div>
 
-    <ul class="nav-links">
-        <li><a th:href="@{/admin}">⚙️ View as Admin</a></li>
-        <li><a th:href="@{/user}" class="user-view-link">👤 View as User</a></li>
-    </ul>
+            <ul class="nav-links nav flex-column mb-3">
+                <li class="nav-item">
+                    <a th:href="@{/admin}" class="nav-link py-3">
+                        ⚙️ View as Admin
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/user}" class="nav-link user-view-link py-3">
+                        👤 View as User
+                    </a>
+                </li>
+            </ul>
 
-    <div style="padding: 20px; margin-top: 20px; border-top: 1px solid #34495e;">
-        <form th:action="@{/logout}" method="post" style="margin: 0;">
-            <button type="submit" class="btn-cancel" style="width: 100%;">
-                Logout
-            </button>
-        </form>
-    </div>
-</div>
-
-<!-- Main Content -->
-<div class="main-content">
-    <div class="header">
-        <div class="user-info">
-            <span class="user-email" sec:authentication="name"></span> with roles:
-            <span id="roles-display" sec:authentication="principal.authorities"></span>
-        </div>
-    </div>
-
-    <h2 class="delete-title">Delete user</h2>
-
-    <div class="delete-container">
-        <div class="warning-message">
-            ⚠️ <strong>Warning:</strong> You are about to delete a user. This action cannot be undone.
+            <div class="p-3 border-top border-secondary">
+                <form th:action="@{/logout}" method="post" class="mb-0">
+                    <button type="submit" class="btn btn-custom-cancel w-100 text-white">
+                        Logout
+                    </button>
+                </form>
+            </div>
         </div>
 
-        <div class="user-info-display">
-            <div class="info-row">
-                <div class="info-label">ID</div>
-                <div class="info-value" th:text="${user.id}">8</div>
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-10 main-content p-4">
+            <!-- Header -->
+            <div class="card header-card mb-4">
+                <div class="card-body">
+                    <div class="user-info text-muted small">
+                        <span class="user-email" sec:authentication="name"></span> with roles:
+                        <span id="roles-display" sec:authentication="principal.authorities"></span>
+                    </div>
+                </div>
             </div>
-            <div class="info-row">
-                <div class="info-label">First name</div>
-                <div class="info-value" th:text="${user.name}">111</div>
-            </div>
-            <div class="info-row">
-                <div class="info-label">Last name</div>
-                <div class="info-value" th:text="${user.surname}">111</div>
-            </div>
-            <div class="info-row">
-                <div class="info-label">Age</div>
-                <div class="info-value" th:text="${user.age}">100</div>
-            </div>
-            <div class="info-row">
-                <div class="info-label">Email</div>
-                <div class="info-value" th:text="${user.email}">111@mail.ru</div>
-            </div>
-            <div class="info-row">
-                <div class="info-label">Role</div>
-                <div class="info-value">
-                        <span th:each="role : ${user.roles}" class="role-badge"
-                              th:text="${role.name.replace('ROLE_', '')}">
-                            ADMIN
-                        </span>
+
+            <!-- Delete Confirmation -->
+            <h2 class="delete-title mb-4">Delete user</h2>
+
+            <div class="card delete-container">
+                <div class="card-body">
+                    <!-- Warning Message -->
+                    <div class="alert warning-message mb-4">
+                        <strong>⚠️ Warning:</strong> You are about to delete a user. This action cannot be undone.
+                    </div>
+
+                    <!-- User Information -->
+                    <div class="user-info-display">
+                        <div class="info-row row">
+                            <div class="info-label col-md-2 fw-bold">ID</div>
+                            <div class="info-value col-md-10" th:text="${user.id}">8</div>
+                        </div>
+                        <div class="info-row row">
+                            <div class="info-label col-md-2 fw-bold">First name</div>
+                            <div class="info-value col-md-10" th:text="${user.name}">111</div>
+                        </div>
+                        <div class="info-row row">
+                            <div class="info-label col-md-2 fw-bold">Last name</div>
+                            <div class="info-value col-md-10" th:text="${user.surname}">111</div>
+                        </div>
+                        <div class="info-row row">
+                            <div class="info-label col-md-2 fw-bold">Age</div>
+                            <div class="info-value col-md-10" th:text="${user.age}">100</div>
+                        </div>
+                        <div class="info-row row">
+                            <div class="info-label col-md-2 fw-bold">Email</div>
+                            <div class="info-value col-md-10" th:text="${user.email}">111@mail.ru</div>
+                        </div>
+                        <div class="info-row row">
+                            <div class="info-label col-md-2 fw-bold">Role</div>
+                            <div class="info-value col-md-10">
+                                <span th:each="role : ${user.roles}" class="role-badge me-1"
+                                      th:text="${role.name.replace('ROLE_', '')}">
+                                    ADMIN
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="form-actions d-flex justify-content-end gap-2 mt-4">
+                        <a th:href="@{/admin}" class="btn btn-custom-cancel text-white">
+                            Close
+                        </a>
+                        <form th:action="@{/admin/delete/{id}(id=${user.id})}" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-custom-delete text-white">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="form-actions">
-            <a th:href="@{/admin}" class="btn-cancel">Close</a>
-            <form th:action="@{/admin/delete/{id}(id=${user.id})}" method="post" style="display: inline;">
-                <button type="submit" class="btn-delete">Delete</button>
-            </form>
-        </div>
     </div>
 </div>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -336,18 +264,6 @@
                 .replace(/\s+/g, ' ')
                 .trim();
             rolesElement.textContent = rolesText;
-        }
-
-        // Format roles in sidebar
-        const sidebarRoles = document.getElementById('sidebar-roles');
-        if (sidebarRoles) {
-            let sidebarRolesText = sidebarRoles.textContent;
-            sidebarRolesText = sidebarRolesText
-                .replace(/\[|\]/g, '')
-                .replace(/,/g, '')
-                .replace(/\s+/g, ' ')
-                .trim();
-            sidebarRoles.textContent = sidebarRolesText;
         }
     });
 </script>
